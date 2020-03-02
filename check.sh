@@ -1,7 +1,5 @@
 #!/bin/bash
 callback(){
-	#requests=$(curl -s "https://freegeoip.app/json/$1" --compressed -L)
-	#requests=$(curl -s "http://digitalmedia.co.th/api.php?ip=$1" --compressed -L)
 	requests=$(curl -s "https://4stars.wtf/country.php?ip=$1" --compressed -L)
 	countryCode=$(echo $requests | grep -Po '(?<=country_code":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
 	countryName=$(echo $requests | grep -Po '(?<=country_name":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
