@@ -1,6 +1,6 @@
 #!/bin/bash
 callback(){
-	requests=$(curl -s "https://4stars.wtf/country.php?ip=$1" --compressed -L)
+	requests=$(curl -s "http://35.223.155.178/country1.php?ip=$1" --compressed -L)
 	countryCode=$(echo $requests | grep -Po '(?<=country_code":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
 	countryName=$(echo $requests | grep -Po '(?<=country_name":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
 	resultjson=$(echo $requests | grep -Po '(?<=error":)[^},]*' | tr -d '[]"' | sed 's/\(<[^>]*>\|<\/>\|{1|}\)//g')
